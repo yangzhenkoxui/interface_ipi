@@ -10,6 +10,9 @@ import json
 
 class RunMain:
 
+    def __init__(self,url,method,data=None):
+        self.res = self.run_main(url,method,data)
+
     def send_post(self,url,data):
         res = requests.post(url=url,data=data).json()
         return json.dump(res,indent=2,sort_keys=True)
