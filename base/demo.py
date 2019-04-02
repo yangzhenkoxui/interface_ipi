@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2019-04-02 15:37
+# @Time    : 2019-04-02 14:26
 # @Author  : Aries
-# @Site    :
-# @File    : test_method.py
+# @Site    : 
+# @File    : demo.py
 # @Software: PyCharm
-
 import requests
 import json
 
@@ -37,4 +36,4 @@ if __name__ == '__main__':
 
     }
     run = RunMain(url,'GET',data)
-    print run.res
+    print(run.res)
