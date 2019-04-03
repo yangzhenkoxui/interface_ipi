@@ -7,7 +7,11 @@
 # @Software: PyCharm
 
 import unittest
+
+from openpyxl.compat import file
+
 from base.demo import RunMain
+import HTMLTestRunner
 
 class TestMethod(unittest.TestCase):
 
@@ -49,11 +53,18 @@ class TestMethod(unittest.TestCase):
         print('this is a testcase2 ')
 
 if __name__ == '__main__':
+    #报告生成路径
+    filepath = "../report/htmlreport.html"
+    #需要一个资源流，去写入报告
+    fp = file(filepath,'wb')
     #运行整体case
     #unittest.main()
     #可以单独运行筛选case,创建一个容器
     suite = unittest.TestSuite
     #添加case，首先添加testmethod列表，在加case名字
     suite.addTest(TestMethod('test_02'))
+    #HTMLTestRunner运行测试报告方式
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='this is first report ')
+    runner.run(suite)
     #运行case
     unittest.TextTestRunner.run(suite)
