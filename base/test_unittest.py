@@ -7,7 +7,8 @@
 # @Software: PyCharm
 
 import unittest
-from demo import RunMain
+from base.demo import RunMain
+
 class TestMethod(unittest.TestCase):
 
     @classmethod
@@ -33,8 +34,12 @@ class TestMethod(unittest.TestCase):
 
         }
         res = self.run.run_main(url,data)
+        #参数有关联关系使用全局变量
+        globals()['name'] = ''
         print('this is a testcase ')
 
+    #忽略case
+    @unittest.skip('')
     def test_02(self):
         url = ''
         data = {
@@ -44,4 +49,11 @@ class TestMethod(unittest.TestCase):
         print('this is a testcase2 ')
 
 if __name__ == '__main__':
-    unittest.main()
+    #运行整体case
+    #unittest.main()
+    #可以单独运行筛选case,创建一个容器
+    suite = unittest.TestSuite
+    #添加case，首先添加testmethod列表，在加case名字
+    suite.addTest(TestMethod('test_02'))
+    #运行case
+    unittest.TextTestRunner.run(suite)
