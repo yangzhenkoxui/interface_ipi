@@ -17,7 +17,7 @@ class OperationExcel:
         else:
             self.filename = '../data_config/interface.xlsx'
             self.sheet_id = 0
-        self.date = self.get_data()
+        self.data = self.get_data()
 
     #获取sheet的内容
     def get_data(self):
@@ -27,7 +27,7 @@ class OperationExcel:
 
     #获取单元格的行数
     def get_lines(self):
-        tables = self.get_data()
+        tables = self.data
         return tables.nrows
 
     #获取某一个单元格的内容
