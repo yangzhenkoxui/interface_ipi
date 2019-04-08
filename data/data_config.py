@@ -11,16 +11,17 @@
 class global_var:
     #case_id
     Id = '0'
-    url = '1'
-    run = '2'
-    request_way = '3'
-    header = '4'
-    case_depend = '5'
-    data_depend = '6'
-    field_depend = '7'
-    data = '8'
-    expect = '9'
-    result = '10'
+    request_name = '1'
+    url = '2'
+    run = '3'
+    request_way = '4'
+    header = '5'
+    case_depend = '6'
+    data_depend = '7'
+    field_depend = '8'
+    data = '9'
+    expect = '10'
+    result = '11'
 
     #获取caseid
     def get_id(self):

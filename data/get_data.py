@@ -23,13 +23,13 @@ class GetData:
     #获取是否执行
     def get_is_run(self,row):
         flag = None
-        col = data_config.get_run()
+        col = int(data_config.get_run())
         run_model = self.opera_excel.get_cell_value(row,col)
 
 
     #是否携带header
     def is_header(self,row):
-        col = data_config.get_header()
+        col = int(data_config.get_header())
         header = self.opera_excel.get_cell_value(row,col)
         if header == 'yes':
             return data_config.get_data_value()
@@ -38,19 +38,19 @@ class GetData:
 
     #获取请求方式
     def get_request_method(self,row):
-        col = data_config.get_run_way()
+        col = int(data_config.get_run_way())
         request_method = self.opera_excel.get_cell_value(row,col)
         return request_method
 
     #获取URL
     def get_request_url(self,row):
-        col = data_config.get_url()
+        col = int(data_config.get_url())
         request_url = self.opera_excel.get_cell_value(row,col)
         return request_url
 
     #获取请求数据
     def get_request_data(self,row):
-        col = data_config.get_data()
+        col = int(data_config.get_data())
         data = self.opera_excel.get_cell_value(row,col)
         if data == '':
             return None
@@ -64,8 +64,23 @@ class GetData:
 
     #获取预期结果
     def get_expect_data(self,row):
-        col = data_config.get_expect()
+        col = int(data_config.get_expect())
         expect = self.opera_excel.get_cell_value(row,col)
         if expect == '':
             return None
+
         return expect
+
+    #写入实际结果
+    def write_result(self,row,value):
+        col = int(data_config.get_result())
+        self.opera_excel.write_value(row,col,value)
+
+    #获取依赖数据的key
+    def get_dependent_key(self,row):
+        col = int(data_config.get_data_depend())
+        depent_key = self.opera_excel.get_cell_value(row,col)
+        if depent_key == "":
+            return None
+        else:
+            return depent_key
