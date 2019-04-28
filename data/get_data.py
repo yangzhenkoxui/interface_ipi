@@ -84,3 +84,22 @@ class GetData:
             return None
         else:
             return depent_key
+
+
+    #判断是否有case依赖
+    def is_depend(self,row):
+        col = int(data_config.get_field_depend())
+        depend_case_id = self.opera_excel.get_cell_value(row,col)
+        if depend_case_id == "":
+            return None
+        else:
+            return depend_case_id
+
+    #获取数据依赖字段
+    def get_depend_field(self,row):
+        col = int(data_config.get_field_depend())
+        data = self.opera_excel.get_cell_value(row,col)
+        if data == "":
+            return None
+        else:
+            return data

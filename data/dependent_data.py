@@ -10,6 +10,7 @@ from util.operation_excel import OperationExcel
 from base.runmethod import RunMethod
 from data.get_data import GetData
 from jsonpath_rw import jsonpath,parse
+import json
 
 class DenpendentData:
     def __init__(self,case_id):
@@ -31,13 +32,16 @@ class DenpendentData:
         method = self.getdata.get_request_data(row_num)
         url = self.getdata.get_request_url(row_num)
         res = run_method.run_main(method,url,request,header)
-        return res
+        return json.loadds(res)
 
     #根据依赖的key去获取执行依赖测试case的响应，然后返回
     def get_data_for_key(self,row):
         depend_data = self.getdata.get_dependent_key(row)
         response_data = self.run_dependent()
+        #创建一个json的规则
         json_exe = parse(depend_data)
+        #按照这个规则在相应数据中寻找
         madle = json_exe.find(response_data)
+        #输出必须按照官方文档写法
         return [math.value for math in madle][0]
 
